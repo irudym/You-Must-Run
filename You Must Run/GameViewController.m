@@ -23,7 +23,11 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene nodeWithFileNamed:@"GameScene"];
+    //GameScene *scene = [GameScene nodeWithFileNamed:@"GameScene"];
+    GameScene *scene = [GameScene sceneWithSize:CGSizeMake(570,420)];
+    //GameScene *scene = [GameScene sceneWithSize:CGSizeMake(640,480)];
+
+    
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

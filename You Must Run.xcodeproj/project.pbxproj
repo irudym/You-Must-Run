@@ -7,6 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7827FD071C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m in Sources */ = {isa = PBXBuildFile; fileRef = 7827FD061C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m */; };
+		7836082D1C945A6700463268 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7836082C1C945A6700463268 /* TODO.txt */; };
+		784A98BE1BEDFF9100E9B7AF /* YMRTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98BD1BEDFF9100E9B7AF /* YMRTileMap.m */; };
+		784A98C01BEE0A6F00E9B7AF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 784A98BF1BEE0A6F00E9B7AF /* background.png */; };
+		784A98C11BEE0A6F00E9B7AF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 784A98BF1BEE0A6F00E9B7AF /* background.png */; };
+		784A98C21BEE0A6F00E9B7AF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 784A98BF1BEE0A6F00E9B7AF /* background.png */; };
+		784A98C71BEE0EF000E9B7AF /* YMRTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98C61BEE0EF000E9B7AF /* YMRTorch.m */; };
+		784A98C81BEE0EF000E9B7AF /* YMRTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98C61BEE0EF000E9B7AF /* YMRTorch.m */; };
+		784A98C91BEE0EF000E9B7AF /* YMRTorch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98C61BEE0EF000E9B7AF /* YMRTorch.m */; };
+		784A98CB1BEF4E4600E9B7AF /* Objects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98CA1BEF4E4600E9B7AF /* Objects.atlas */; };
+		784A98CC1BEF4E4600E9B7AF /* Objects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98CA1BEF4E4600E9B7AF /* Objects.atlas */; };
+		784A98CD1BEF4E4600E9B7AF /* Objects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98CA1BEF4E4600E9B7AF /* Objects.atlas */; };
+		784A98D01BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98CF1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m */; };
+		784A98D11BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98CF1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m */; };
+		784A98D21BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98CF1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m */; };
+		784A98D51BEF7C4500E9B7AF /* YMRSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D41BEF7C4500E9B7AF /* YMRSwitch.m */; };
+		784A98D61BEF7C4500E9B7AF /* YMRSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D41BEF7C4500E9B7AF /* YMRSwitch.m */; };
+		784A98D71BEF7C4500E9B7AF /* YMRSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D41BEF7C4500E9B7AF /* YMRSwitch.m */; };
+		784A98DA1BEF818800E9B7AF /* YMRRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D91BEF818800E9B7AF /* YMRRunner.m */; };
+		784A98DB1BEF818800E9B7AF /* YMRRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D91BEF818800E9B7AF /* YMRRunner.m */; };
+		784A98DC1BEF818800E9B7AF /* YMRRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98D91BEF818800E9B7AF /* YMRRunner.m */; };
+		784A98DE1BEF857E00E9B7AF /* Runners.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98DD1BEF857E00E9B7AF /* Runners.atlas */; };
+		784A98DF1BEF857E00E9B7AF /* Runners.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98DD1BEF857E00E9B7AF /* Runners.atlas */; };
+		784A98E01BEF857E00E9B7AF /* Runners.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 784A98DD1BEF857E00E9B7AF /* Runners.atlas */; };
+		784A98E31BEF85BA00E9B7AF /* YMRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E21BEF85BA00E9B7AF /* YMRPlayer.m */; };
+		784A98E41BEF85BA00E9B7AF /* YMRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E21BEF85BA00E9B7AF /* YMRPlayer.m */; };
+		784A98E51BEF85BA00E9B7AF /* YMRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E21BEF85BA00E9B7AF /* YMRPlayer.m */; };
+		784A98E81BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E71BEF88BF00E9B7AF /* YMRPhysicsWorld.m */; };
+		784A98E91BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E71BEF88BF00E9B7AF /* YMRPhysicsWorld.m */; };
+		784A98EA1BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 784A98E71BEF88BF00E9B7AF /* YMRPhysicsWorld.m */; };
+		784AAD3C1BF7499F0004D880 /* YMRControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD3B1BF7499F0004D880 /* YMRControlButton.m */; };
+		784AAD3D1BF7499F0004D880 /* YMRControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD3B1BF7499F0004D880 /* YMRControlButton.m */; };
+		784AAD3E1BF7499F0004D880 /* YMRControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD3B1BF7499F0004D880 /* YMRControlButton.m */; };
+		784AAD411BF74B900004D880 /* YMRControlLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD401BF74B900004D880 /* YMRControlLayer.m */; };
+		784AAD421BF74B900004D880 /* YMRControlLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD401BF74B900004D880 /* YMRControlLayer.m */; };
+		784AAD431BF74B900004D880 /* YMRControlLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 784AAD401BF74B900004D880 /* YMRControlLayer.m */; };
+		784AAD451BF74DCB0004D880 /* arrow-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD441BF74DCB0004D880 /* arrow-retina@2x.png */; };
+		784AAD461BF74DCB0004D880 /* arrow-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD441BF74DCB0004D880 /* arrow-retina@2x.png */; };
+		784AAD471BF74DCB0004D880 /* arrow-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD441BF74DCB0004D880 /* arrow-retina@2x.png */; };
+		784AAD491BF74DDC0004D880 /* action-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD481BF74DDC0004D880 /* action-retina@2x.png */; };
+		784AAD4A1BF74DDC0004D880 /* action-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD481BF74DDC0004D880 /* action-retina@2x.png */; };
+		784AAD4B1BF74DDC0004D880 /* action-retina@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784AAD481BF74DDC0004D880 /* action-retina@2x.png */; };
+		7875AA201D5743770004418A /* YMRAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7875AA1F1D5743770004418A /* YMRAction.m */; };
+		7875AA211D5743770004418A /* YMRAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7875AA1F1D5743770004418A /* YMRAction.m */; };
 		78F590651BED3501007654CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590641BED3501007654CE /* main.m */; };
 		78F590681BED3501007654CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590671BED3501007654CE /* AppDelegate.m */; };
 		78F5906B1BED3501007654CE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5906A1BED3501007654CE /* GameScene.m */; };
@@ -17,6 +61,19 @@
 		78F590781BED3501007654CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F590761BED3501007654CE /* LaunchScreen.storyboard */; };
 		78F590831BED3501007654CE /* You_Must_RunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590821BED3501007654CE /* You_Must_RunTests.m */; };
 		78F5908E1BED3501007654CE /* You_Must_RunUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5908D1BED3501007654CE /* You_Must_RunUITests.m */; };
+		78F5909D1BED353A007654CE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5909C1BED353A007654CE /* LFCGzipUtility.m */; };
+		78F5909E1BED353A007654CE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5909C1BED353A007654CE /* LFCGzipUtility.m */; };
+		78F5909F1BED353A007654CE /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5909C1BED353A007654CE /* LFCGzipUtility.m */; };
+		78F590A21BED3554007654CE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590A11BED3554007654CE /* JSTileMap.m */; };
+		78F590A31BED3554007654CE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590A11BED3554007654CE /* JSTileMap.m */; };
+		78F590A41BED3554007654CE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F590A11BED3554007654CE /* JSTileMap.m */; };
+		78F590A81BED35F0007654CE /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A61BED35F0007654CE /* level1.tmx */; };
+		78F590A91BED35F0007654CE /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A61BED35F0007654CE /* level1.tmx */; };
+		78F590AA1BED35F0007654CE /* level1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A61BED35F0007654CE /* level1.tmx */; };
+		78F590AB1BED35F0007654CE /* levelset1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A71BED35F0007654CE /* levelset1.png */; };
+		78F590AC1BED35F0007654CE /* levelset1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A71BED35F0007654CE /* levelset1.png */; };
+		78F590AD1BED35F0007654CE /* levelset1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F590A71BED35F0007654CE /* levelset1.png */; };
+		78F590B91BED39C5007654CE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F590B81BED39C5007654CE /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +94,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7827FD051C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray (QueueAdditions).h"; path = "game/NSMutableArray (QueueAdditions).h"; sourceTree = "<group>"; };
+		7827FD061C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray (QueueAdditions).m"; path = "game/NSMutableArray (QueueAdditions).m"; sourceTree = "<group>"; };
+		7836082C1C945A6700463268 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		784A98BC1BEDFF9100E9B7AF /* YMRTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRTileMap.h; path = game/YMRTileMap.h; sourceTree = "<group>"; };
+		784A98BD1BEDFF9100E9B7AF /* YMRTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRTileMap.m; path = game/YMRTileMap.m; sourceTree = "<group>"; };
+		784A98BF1BEE0A6F00E9B7AF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		784A98C41BEE0E6F00E9B7AF /* LightSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightSource.h; path = game/LightSource.h; sourceTree = "<group>"; };
+		784A98C51BEE0EF000E9B7AF /* YMRTorch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRTorch.h; path = game/YMRTorch.h; sourceTree = "<group>"; };
+		784A98C61BEE0EF000E9B7AF /* YMRTorch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRTorch.m; path = game/YMRTorch.m; sourceTree = "<group>"; };
+		784A98CA1BEF4E4600E9B7AF /* Objects.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Objects.atlas; sourceTree = "<group>"; };
+		784A98CE1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRSharedTextureAtlas.h; path = game/YMRSharedTextureAtlas.h; sourceTree = "<group>"; };
+		784A98CF1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRSharedTextureAtlas.m; path = game/YMRSharedTextureAtlas.m; sourceTree = "<group>"; };
+		784A98D31BEF7C4500E9B7AF /* YMRSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRSwitch.h; path = game/YMRSwitch.h; sourceTree = "<group>"; };
+		784A98D41BEF7C4500E9B7AF /* YMRSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRSwitch.m; path = game/YMRSwitch.m; sourceTree = "<group>"; };
+		784A98D81BEF818800E9B7AF /* YMRRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRRunner.h; path = game/YMRRunner.h; sourceTree = "<group>"; };
+		784A98D91BEF818800E9B7AF /* YMRRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRRunner.m; path = game/YMRRunner.m; sourceTree = "<group>"; };
+		784A98DD1BEF857E00E9B7AF /* Runners.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Runners.atlas; sourceTree = "<group>"; };
+		784A98E11BEF85BA00E9B7AF /* YMRPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRPlayer.h; path = game/YMRPlayer.h; sourceTree = "<group>"; };
+		784A98E21BEF85BA00E9B7AF /* YMRPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRPlayer.m; path = game/YMRPlayer.m; sourceTree = "<group>"; };
+		784A98E61BEF88BF00E9B7AF /* YMRPhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRPhysicsWorld.h; path = game/YMRPhysicsWorld.h; sourceTree = "<group>"; };
+		784A98E71BEF88BF00E9B7AF /* YMRPhysicsWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRPhysicsWorld.m; path = game/YMRPhysicsWorld.m; sourceTree = "<group>"; };
+		784A98EB1BEFC7B900E9B7AF /* PhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsObject.h; path = game/PhysicsObject.h; sourceTree = "<group>"; };
+		784AAD3A1BF7499F0004D880 /* YMRControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRControlButton.h; path = game/YMRControlButton.h; sourceTree = "<group>"; };
+		784AAD3B1BF7499F0004D880 /* YMRControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRControlButton.m; path = game/YMRControlButton.m; sourceTree = "<group>"; };
+		784AAD3F1BF74B900004D880 /* YMRControlLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRControlLayer.h; path = game/YMRControlLayer.h; sourceTree = "<group>"; };
+		784AAD401BF74B900004D880 /* YMRControlLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRControlLayer.m; path = game/YMRControlLayer.m; sourceTree = "<group>"; };
+		784AAD441BF74DCB0004D880 /* arrow-retina@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-retina@2x.png"; sourceTree = "<group>"; };
+		784AAD481BF74DDC0004D880 /* action-retina@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action-retina@2x.png"; sourceTree = "<group>"; };
+		7875AA1E1D5743770004418A /* YMRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YMRAction.h; path = game/YMRAction.h; sourceTree = "<group>"; };
+		7875AA1F1D5743770004418A /* YMRAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YMRAction.m; path = game/YMRAction.m; sourceTree = "<group>"; };
 		78F590601BED3501007654CE /* You Must Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "You Must Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F590641BED3501007654CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		78F590661BED3501007654CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +143,13 @@
 		78F590891BED3501007654CE /* You Must RunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "You Must RunUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F5908D1BED3501007654CE /* You_Must_RunUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = You_Must_RunUITests.m; sourceTree = "<group>"; };
 		78F5908F1BED3501007654CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78F5909B1BED352E007654CE /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		78F5909C1BED353A007654CE /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		78F590A01BED3554007654CE /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		78F590A11BED3554007654CE /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		78F590A61BED35F0007654CE /* level1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level1.tmx; sourceTree = "<group>"; };
+		78F590A71BED35F0007654CE /* levelset1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelset1.png; sourceTree = "<group>"; };
+		78F590B81BED39C5007654CE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F590B91BED39C5007654CE /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +181,33 @@
 		78F590571BED3501007654CE = {
 			isa = PBXGroup;
 			children = (
+				7875AA1E1D5743770004418A /* YMRAction.h */,
+				7875AA1F1D5743770004418A /* YMRAction.m */,
+				7836082C1C945A6700463268 /* TODO.txt */,
+				7827FD051C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).h */,
+				7827FD061C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m */,
+				784AAD3F1BF74B900004D880 /* YMRControlLayer.h */,
+				784AAD401BF74B900004D880 /* YMRControlLayer.m */,
+				784AAD3A1BF7499F0004D880 /* YMRControlButton.h */,
+				784AAD3B1BF7499F0004D880 /* YMRControlButton.m */,
+				784A98EB1BEFC7B900E9B7AF /* PhysicsObject.h */,
+				784A98E61BEF88BF00E9B7AF /* YMRPhysicsWorld.h */,
+				784A98E71BEF88BF00E9B7AF /* YMRPhysicsWorld.m */,
+				784A98E11BEF85BA00E9B7AF /* YMRPlayer.h */,
+				784A98E21BEF85BA00E9B7AF /* YMRPlayer.m */,
+				784A98D81BEF818800E9B7AF /* YMRRunner.h */,
+				784A98D91BEF818800E9B7AF /* YMRRunner.m */,
+				784A98D31BEF7C4500E9B7AF /* YMRSwitch.h */,
+				784A98D41BEF7C4500E9B7AF /* YMRSwitch.m */,
+				784A98CE1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.h */,
+				784A98CF1BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m */,
+				784A98C51BEE0EF000E9B7AF /* YMRTorch.h */,
+				784A98C61BEE0EF000E9B7AF /* YMRTorch.m */,
+				784A98C41BEE0E6F00E9B7AF /* LightSource.h */,
+				784A98BC1BEDFF9100E9B7AF /* YMRTileMap.h */,
+				784A98BD1BEDFF9100E9B7AF /* YMRTileMap.m */,
+				78F590B81BED39C5007654CE /* libz.tbd */,
+				78F590A51BED3564007654CE /* resources */,
 				78F590621BED3501007654CE /* You Must Run */,
 				78F590811BED3501007654CE /* You Must RunTests */,
 				78F5908C1BED3501007654CE /* You Must RunUITests */,
@@ -111,8 +233,12 @@
 				78F590691BED3501007654CE /* GameScene.h */,
 				78F5906A1BED3501007654CE /* GameScene.m */,
 				78F5906C1BED3501007654CE /* GameScene.sks */,
+				78F590A01BED3554007654CE /* JSTileMap.h */,
+				78F590A11BED3554007654CE /* JSTileMap.m */,
 				78F5906E1BED3501007654CE /* GameViewController.h */,
 				78F5906F1BED3501007654CE /* GameViewController.m */,
+				78F5909B1BED352E007654CE /* LFCGzipUtility.h */,
+				78F5909C1BED353A007654CE /* LFCGzipUtility.m */,
 				78F590711BED3501007654CE /* Main.storyboard */,
 				78F590741BED3501007654CE /* Assets.xcassets */,
 				78F590761BED3501007654CE /* LaunchScreen.storyboard */,
@@ -146,6 +272,20 @@
 				78F5908F1BED3501007654CE /* Info.plist */,
 			);
 			path = "You Must RunUITests";
+			sourceTree = "<group>";
+		};
+		78F590A51BED3564007654CE /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				784AAD481BF74DDC0004D880 /* action-retina@2x.png */,
+				784AAD441BF74DCB0004D880 /* arrow-retina@2x.png */,
+				784A98DD1BEF857E00E9B7AF /* Runners.atlas */,
+				784A98CA1BEF4E4600E9B7AF /* Objects.atlas */,
+				78F590A61BED35F0007654CE /* level1.tmx */,
+				78F590A71BED35F0007654CE /* levelset1.png */,
+				784A98BF1BEE0A6F00E9B7AF /* background.png */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,10 +394,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784A98DE1BEF857E00E9B7AF /* Runners.atlas in Resources */,
+				784AAD451BF74DCB0004D880 /* arrow-retina@2x.png in Resources */,
+				78F590A81BED35F0007654CE /* level1.tmx in Resources */,
 				78F5906D1BED3501007654CE /* GameScene.sks in Resources */,
+				784A98CB1BEF4E4600E9B7AF /* Objects.atlas in Resources */,
+				784A98C01BEE0A6F00E9B7AF /* background.png in Resources */,
+				784AAD491BF74DDC0004D880 /* action-retina@2x.png in Resources */,
 				78F590781BED3501007654CE /* LaunchScreen.storyboard in Resources */,
+				7836082D1C945A6700463268 /* TODO.txt in Resources */,
 				78F590751BED3501007654CE /* Assets.xcassets in Resources */,
 				78F590731BED3501007654CE /* Main.storyboard in Resources */,
+				78F590AB1BED35F0007654CE /* levelset1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +413,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F590A91BED35F0007654CE /* level1.tmx in Resources */,
+				784AAD4A1BF74DDC0004D880 /* action-retina@2x.png in Resources */,
+				784A98C11BEE0A6F00E9B7AF /* background.png in Resources */,
+				784A98DF1BEF857E00E9B7AF /* Runners.atlas in Resources */,
+				784A98CC1BEF4E4600E9B7AF /* Objects.atlas in Resources */,
+				78F590AC1BED35F0007654CE /* levelset1.png in Resources */,
+				784AAD461BF74DCB0004D880 /* arrow-retina@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +427,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78F590AA1BED35F0007654CE /* level1.tmx in Resources */,
+				784AAD4B1BF74DDC0004D880 /* action-retina@2x.png in Resources */,
+				784A98C21BEE0A6F00E9B7AF /* background.png in Resources */,
+				784A98E01BEF857E00E9B7AF /* Runners.atlas in Resources */,
+				784A98CD1BEF4E4600E9B7AF /* Objects.atlas in Resources */,
+				78F590AD1BED35F0007654CE /* levelset1.png in Resources */,
+				784AAD471BF74DCB0004D880 /* arrow-retina@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +444,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784A98D51BEF7C4500E9B7AF /* YMRSwitch.m in Sources */,
+				7827FD071C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m in Sources */,
+				784AAD411BF74B900004D880 /* YMRControlLayer.m in Sources */,
 				78F590701BED3501007654CE /* GameViewController.m in Sources */,
+				78F5909D1BED353A007654CE /* LFCGzipUtility.m in Sources */,
+				784A98E31BEF85BA00E9B7AF /* YMRPlayer.m in Sources */,
+				784AAD3C1BF7499F0004D880 /* YMRControlButton.m in Sources */,
 				78F590681BED3501007654CE /* AppDelegate.m in Sources */,
+				784A98D01BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */,
+				784A98E81BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */,
+				784A98BE1BEDFF9100E9B7AF /* YMRTileMap.m in Sources */,
+				784A98DA1BEF818800E9B7AF /* YMRRunner.m in Sources */,
+				7875AA201D5743770004418A /* YMRAction.m in Sources */,
+				78F590A21BED3554007654CE /* JSTileMap.m in Sources */,
+				784A98C71BEE0EF000E9B7AF /* YMRTorch.m in Sources */,
 				78F5906B1BED3501007654CE /* GameScene.m in Sources */,
 				78F590651BED3501007654CE /* main.m in Sources */,
 			);
@@ -293,6 +468,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784A98D61BEF7C4500E9B7AF /* YMRSwitch.m in Sources */,
+				78F590A31BED3554007654CE /* JSTileMap.m in Sources */,
+				784A98D11BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */,
+				784A98E41BEF85BA00E9B7AF /* YMRPlayer.m in Sources */,
+				784AAD3D1BF7499F0004D880 /* YMRControlButton.m in Sources */,
+				784A98C81BEE0EF000E9B7AF /* YMRTorch.m in Sources */,
+				784A98DB1BEF818800E9B7AF /* YMRRunner.m in Sources */,
+				784AAD421BF74B900004D880 /* YMRControlLayer.m in Sources */,
+				7875AA211D5743770004418A /* YMRAction.m in Sources */,
+				78F5909E1BED353A007654CE /* LFCGzipUtility.m in Sources */,
+				784A98E91BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */,
 				78F590831BED3501007654CE /* You_Must_RunTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +487,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784A98D71BEF7C4500E9B7AF /* YMRSwitch.m in Sources */,
+				78F590A41BED3554007654CE /* JSTileMap.m in Sources */,
+				784A98D21BEF4FC100E9B7AF /* YMRSharedTextureAtlas.m in Sources */,
+				784A98E51BEF85BA00E9B7AF /* YMRPlayer.m in Sources */,
+				784AAD3E1BF7499F0004D880 /* YMRControlButton.m in Sources */,
+				784A98C91BEE0EF000E9B7AF /* YMRTorch.m in Sources */,
+				784A98DC1BEF818800E9B7AF /* YMRRunner.m in Sources */,
+				784AAD431BF74B900004D880 /* YMRControlLayer.m in Sources */,
+				78F5909F1BED353A007654CE /* LFCGzipUtility.m in Sources */,
+				784A98EA1BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */,
 				78F5908E1BED3501007654CE /* You_Must_RunUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "You Must Run/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cloud2logic.You-Must-Run";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,6 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "You Must Run/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cloud2logic.You-Must-Run";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +711,7 @@
 				78F590941BED3501007654CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78F590951BED3501007654CE /* Build configuration list for PBXNativeTarget "You Must RunTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +720,7 @@
 				78F590971BED3501007654CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78F590981BED3501007654CE /* Build configuration list for PBXNativeTarget "You Must RunUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +729,7 @@
 				78F5909A1BED3501007654CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

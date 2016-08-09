@@ -1,0 +1,7 @@
+Need to implement
+
+[ ] Need to check if runner is out the screen (y<0) then the runner should be dead
+[X] Override Scene updated function to perform phycis first (to avoid showing how runner goes over floor) - it has been already done... hmmm
+[ ] fix runX speed
+[ ] when stop the runner while turn amination it's drop the animation frames. Need to remove all actions except the turn...
+[ ] error in srite size when stop during turnUp befero it finished
