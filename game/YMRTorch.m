@@ -17,9 +17,14 @@
 
 -(id)initWithName:(NSString *)name andPosition:(CGPoint)position {
     atlas = [YMRSharedTextureAtlas getAtlasByName:@"Objects"];
-    self = [super initWithTexture:[atlas textureNamed:@"torch1.png"]];
+    if(!atlas) {
+        NSLog(@"Error getting atlas named: Objects");
+        return nil;
+    }
     
+    self = [super initWithTexture:[atlas textureNamed:@"torch1.png"]];
     if(!self) return nil;
+    
     
     [self setName:name];
     [self setPosition:position];
@@ -63,5 +68,8 @@
 -(SKNode*) getLightMap {
     return nil;
 }
+
+-(void) activate {};
+-(void) deactivate {};
 
 @end

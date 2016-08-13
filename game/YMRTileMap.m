@@ -11,9 +11,14 @@
 #define MAP_OFFSET 50
 
 @implementation YMRTileMap
+{
+    SKNode *objectLayer;
+}
 
 -(id) initWithFile: (NSString*) filename {
     self = [super init];
+    if(!self) return nil;
+    
     self.levelMap = [JSTileMap mapNamed: filename];
     self.levelMap.position = CGPointMake(0, MAP_OFFSET); //fix map position on the screen
     
@@ -36,7 +41,15 @@
     
     [self addChild: self.levelMap];
     
+    objectLayer = [[SKNode alloc] init];
+    objectLayer.name = @"object_layer";
+    [objectLayer setPosition:CGPointMake(0, 0)];
+    objectLayer.zPosition = -20;
+    
+    [self addChild:objectLayer];
+    
     //Add objects to the map
+    NSMutableArray *teleports = [NSMutableArray array];
     
     NSArray* objects = [[self.levelMap objectGroups][0] objects];
     for (NSDictionary * object in objects) {
@@ -45,17 +58,55 @@
             //add torch to the map
             NSLog(@"Add torch: %@ with position [%@,%@]", object[@"name"], object[@"x"], object[@"y"]);
             YMRTorch* torch = [[YMRTorch alloc] initWithName: object[@"name"] andPosition: CGPointMake([object[@"x"] floatValue], [object[@"y"] floatValue] + MAP_OFFSET)];
-            [self addChild:torch];
+            torch.zPosition = -20;
+            [objectLayer addChild:torch];
+            
         } else
         if([object[@"type"] isEqualToString: @"switch"]) {
             NSLog(@"Add switch %@", object[@"name"]);
             YMRSwitch* switchPanel = [[YMRSwitch alloc] initWithName: object[@"name"] andPosition: CGPointMake([object[@"x"] floatValue], [object[@"y"] floatValue] + MAP_OFFSET)];
-            [self addChild:switchPanel];
+            [objectLayer addChild:switchPanel];
+        } else
+        if([object[@"type"] isEqualToString:@"teleport"]) {
+            NSLog(@"Add teleport %@ with connection to %@", object[@"name"], object[@"linkTo"]);
+            
+            CGPoint tposition = CGPointMake([object[@"x"] floatValue], [object[@"y"] floatValue]);
+            
+            //get tile position to align the teleport on the map
+            CGPoint sposition = [self getTileScreenPositionAtPoint:tposition];
+            //fix teleport position
+            sposition.y += 1.5* [self getTileHeightAtPoint:tposition];
+            
+            YMRTeleport* teleport = [[YMRTeleport alloc] initWithName:object[@"name"] andPosition: sposition];
+            
+            [teleport setLinkedTeleportName:object[@"linkTo"]];
+            [teleports addObject:teleport];
+            [objectLayer addChild:teleport];
         }
     }
     
+    //update teleport connections
+    for(int i=0;i<[teleports count]; i++) {
+        if([teleports[i] linkedTeleport] == nil) {
+            YMRTeleport* tel = [YMRTileMap findTeleportByName:[teleports[i] linkedTeleportName] inArray:teleports];
+            if(tel!=nil) {
+                [teleports[i] setLinkedTeleport:tel];
+            } else {
+                NSLog(@"Error to find teleport with name: %@", [teleports[i] linkedTeleportName]);
+                [teleports[i] setLinkedTeleport:teleports[i]];
+            }
+        }
+    }
     
     return self;
+}
+
+
++(YMRTeleport*) findTeleportByName: (NSString*)name inArray: (NSMutableArray*)teleports {
+    for(int i = 0;i<[teleports count];i++) {
+        if([[teleports[i] name] isEqualToString:name]) return teleports[i];
+    }
+    return nil;
 }
 
 +(id) mapWithFile: (NSString*) filename {
@@ -64,6 +115,7 @@
 
 -(CGPoint) getTileScreenPositionAtPoint: (CGPoint) point {
     CGPoint coord = [[[self.levelMap layerNamed:@"map"] tileAt:point] position];
+    
     //adjust the position as the sprite has the anchor point in the middle
     coord.y -= [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.height/2; //size of the tile
     coord.x -= [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.width/2;
@@ -105,6 +157,23 @@
     int tile_gid = [[_levelMap layerNamed:@"map"] tileGidAt:position];
     if([self isLadderBase: tile_gid]) return tile_gid;
     return -1;
+}
+
+-(SKNode<YMRMapObject>*) getObjectAtPosition: (CGPoint)position {
+    
+    SKNode<YMRMapObject>* obj = nil;
+    
+    NSArray <SKSpriteNode*> *objects = [self getObjects];
+    for(int i=0;i<[objects count]; i++) {
+        if(position.x >= [objects[i] position].x && position.y >= [objects[i] position].y && position.x <= ([objects[i] position].x + [objects[i] size].width) && position.y <= ([objects[i] position].y + [objects[i] size].height)) {
+            return objects[i];
+        }
+    }
+    return obj;
+}
+
+-(NSArray <SKNode *>*) getObjects {
+    return [objectLayer children];
 }
 
 

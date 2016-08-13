@@ -66,6 +66,7 @@
 -(void) rightButtonDown {
     //[mainRunner setDirection:CGPointMake(1, 0)];
     //[mainRunner setButtonPressed:RIGHT];
+    
     [mainRunner run: RIGHT];
 }
 
@@ -76,6 +77,7 @@
 }
 
 -(void) leftButtonDown {
+    
     //[mainRunner setButtonPressed:LEFT];
     //[mainRunner setDirection:CGPointMake(-1,0)];
     [mainRunner run: LEFT];
@@ -92,12 +94,17 @@
     {
         NSLog(@"Check the ladder\n\tPlayerX: %f\n\tLadderX: %f", mainRunner.position.x, [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2);
         [mainRunner climb:UP withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
+    //} else //some other objects which can be activated
+        //if() {
+        
     } else
         //otherwise just jump!
         [mainRunner jump];
 }
 
 -(void) downButtonDown {
+    if([mainRunner currentAction] == STOP_ACTION) return;
+    
     //check if ladder is near and climb up
     //TODO: Need to get rid of that adjustment!
     CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y - 50);
@@ -111,8 +118,8 @@
 }
 
 -(void) actionButtonDown {
-//    [mainRunner turn:LEFT];
-    [mainRunner nextAction];
+    //[mainRunner turn:LEFT];
+    //[mainRunner nextAction];
 }
 
 -(void) actionButtonUp {

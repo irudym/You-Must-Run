@@ -26,6 +26,8 @@ FOUNDATION_EXPORT CGVector const DOWN;
 -(int) currentAction;
 -(CGVector) currentDirection;
 
+-(void) lock;
+-(void) unlock;
 
 @end
 

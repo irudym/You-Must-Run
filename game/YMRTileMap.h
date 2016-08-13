@@ -11,6 +11,7 @@
 
 #import "YMRTorch.h"
 #import "YMRSwitch.h"
+#import "YMRTeleport.h"
 
 @interface YMRTileMap : SKNode
 
@@ -22,6 +23,10 @@
 -(float) getTileWidthAtPoint: (CGPoint) point;
 
 -(CGSize) size;
+
+-(SKNode<YMRMapObject>*) getObjectAtPosition: (CGPoint)position;
+-(NSArray <SKNode *>*) getObjects;
+
 
 //Return YES if tile is ladder base
 -(BOOL) isLadderBase: (int) gid;

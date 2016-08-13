@@ -10,6 +10,7 @@
 #import "YMRRunner.h"
 #import "YMRTileMap.h"
 #import "YMRControlButton.h"
+#import "YMRAction.h"
 
 @interface YMRControlLayer : SKNode
 

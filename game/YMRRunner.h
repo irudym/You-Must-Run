@@ -29,15 +29,15 @@
 -(id) initWithName: (NSString*) name AndPosition: (CGPoint) position;
 -(void) load;
 
--(void) runX: (float)x;
+-(void) runToX: (float)x;
 -(void) turn: (CGVector)direction;
-//-(void) turn;
 -(void) fallY: (float)y;
 -(void) fall;
 -(void) land;
 -(void) climbY: (float)y;
--(void) jumpX: (float)x;
+-(void) jumpToX: (float)x;
 -(void) stepToX: (float)x; //small steps to get to exact point in the map
+-(void) runByX: (float)x;
 
 
 //key press events
@@ -66,8 +66,8 @@
 + (SKAction *)jumpWithStartPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint height:(CGFloat)height;
 
 
-@property ActionTags nextAction;
-@property CGPoint nextPosition;
+//@property ActionTags nextAction;
+//@property CGPoint nextPosition;
 //@property Direction nextDirection;
 @property ActionTags currentAction;
 
@@ -85,12 +85,8 @@
 @property NSMutableArray* jumpFrames;
 
 //direction
-//@property Direction currentDirection;
 @property CGVector currentDirection;
 
-//translate direction from legacy enum to vector
-//TODO: Have to get rid of the legacy enum at all!
-//+(CGVector) getDirection: (Direction) direct;
 
 /**
  * Helper functions
@@ -99,36 +95,52 @@
  * action - usually amination action (the second element in the taskQueue
  * afterAction - the last method which finalize all actions
  *
- * example: beforeTurnLeft
-            turnLeft
+ * example: actionTurnLeft
             afterTurnLeft
  
  * all these function can be overrided by child classes
  **/
 
--(void) beforeTurnLeft;
--(void) beforeTurnRight;
--(void) beforeTurnUpDown;
--(void) afterTurnLeft;
+-(void) actionTurnRight;
 -(void) afterTurnRight;
+
+-(void) actionTurnLeft;
+-(void) afterTurnLeft;
+
+-(void) actionTurnUpDown;
 -(void) afterTurnUpDown;
 
--(void) beforeActionRun;
+-(void) actionFall;
 
-//STOP actions
--(void) beforeActionStop;
--(void) afterActionStop;
+-(void) actionLanding;
+-(void) afterLanding;
 
-//LANDIN actions functions
--(void) beforeActionLanding;
--(void) afterActionLanding;
+-(void) actionStop;
+-(void) afterStop;
 
--(void) beforeActionClimb;
+-(void) actionRun;
+
+-(void) actionStep;
+-(void) afterStep;
+
 -(void) actionClimb;
--(void) afterActionClimb;
 
--(void) beforeActionStep;
--(void) afterActionStep;
+//Physic object functions
+//lock and unlock - used to lock the runner in case of some animations, in example: teleportation
+
+-(void) lock;
+-(void) unlock;
+
+//OVERRIDE
+-(void) update: (CFTimeInterval)currentTime;
+
+//Utiliy functions
+-(void) runAction: (SKAction*) action andAfter: (SEL) func;
+-(void) logFunction:(NSString*) name;
++(BOOL) compareVector: (CGVector) v1 with:(CGVector) v2;
++(BOOL) isDirectionLeft: (CGVector) direction;
++(BOOL) isDirectionRight: (CGVector) direction;
+
 
 
 //animations

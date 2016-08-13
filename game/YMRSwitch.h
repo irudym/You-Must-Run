@@ -8,14 +8,18 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "LightSource.h"
+#import "MapObject.h"
 #import "YMRSharedTextureAtlas.h"
 
-@interface YMRSwitch : SKSpriteNode <YMRLightSource>
+@interface YMRSwitch : SKSpriteNode <YMRLightSource, YMRMapObject>
 
 -(id) initWithName: (NSString*)name andPosition: (CGPoint) position;
 -(void) load;
 -(void) animate;
 
 -(SKNode*) getLightMap;
+
+-(void) activate;
+-(void) deactivate;
 
 @end

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[YMRRunner runNextTask]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentDirection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner actionTurnLeft]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentDirection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner turn:]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner beforeTurnRight]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRPlayer run:]:YMRPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner runByX:]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentAction">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner stop]:YMRRunner.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "taskQueue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[YMRRunner stepToX:]:YMRRunner.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

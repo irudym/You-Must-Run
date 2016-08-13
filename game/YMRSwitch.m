@@ -61,5 +61,8 @@
     return nil;
 }
 
+-(void) activate {};
+-(void) deactivate {};
+
 
 @end

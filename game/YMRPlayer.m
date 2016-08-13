@@ -20,35 +20,18 @@
 }
 
 
-/**
- * move the character by X points d
- **/
--(void) runByX: (float)x {
-    NSLog(@"Player Run by X: %f", x);
-    [self.taskQueue push: [YMRAction performSelector:@selector(beforeActionRun) onTarget:self withTag: RUN_ACTION]];
-    [self.taskQueue push: [YMRAction moveBy:CGVectorMake(x, 0) duration: self.moveSpeed * fabs(x)/80 withTag: RUN_ACTION]];
-}
 
 -(void) run:(CGVector)direct {
+    [self logFunction:@"YMRPlayer::run"];
     
-    //we cannot run while falling
-    if(self.currentAction  == FALL_ACTION) return;
-    
-    NSLog(@"Player Run direction: %f,%f where current direction: %f,%f", direct.dx, direct.dy, self.currentDirection.dx, self.currentDirection.dy);
-    if(direct.dx != self.currentDirection.dx) {
-        //need to turn the runner
-        NSLog(@"Turn the runner to %f, %f", direct.dx, direct.dy);
+    if(![YMRRunner compareVector:direct with:[self currentDirection]]) {
+        //need to turn the runner to look to the right side
         [self turn: direct];
     }
     
-    //add task to task Queue
-    if(direct.dx < 0 /*LEFT*/)
-        [self runByX: -1000]; else [self runByX: 1000];
-    
-    NSLog(@"Player Run:: Curent action: %d", self.currentAction);
-    if(self.currentAction == NONE) {
-        [self runNextTask];
-    }
+    if([YMRRunner isDirectionRight:direct])
+        [self runByX:1000];
+    else [self runByX:-1000];
 }
 
 @end

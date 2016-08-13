@@ -11,6 +11,7 @@
 
 #import "YMRTileMap.h"
 #import "PhysicsObject.h"
+#import "MapObject.h"
 #include "YMRAction.h"
 
 

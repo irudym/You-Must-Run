@@ -20,10 +20,11 @@
 
 -(id) initWithMap: (YMRTileMap*) map {
     self = [super init];
-    if(self) {
-        objects = [NSMutableArray array];
-        levelMap = map;
-    }
+    if(!self) return nil;
+    
+    
+    objects = [NSMutableArray array];
+    levelMap = map;
     
     [self setAdjustmentY:0];
     
@@ -54,8 +55,23 @@
     CGPoint coord;
     CGPoint tile_coord;
     int tile_gid;
+    id<YMRMapObject> mapObject;
     for(int i=0;i<[objects count];i++) {
         coord = [objects[i] position];
+        
+        //deactivate objects
+        NSArray* obj = [levelMap getObjects];
+        for(int i=0; i< [obj count]; i++) {
+            [obj[i] deactivate];
+        }
+        
+        //check if the object at some map objects and activate it
+        mapObject = [levelMap getObjectAtPosition:coord];
+        if(mapObject!=nil) {
+            NSLog(@"Physical object should activate: %@", [(SKNode*)mapObject name]);
+            [mapObject activate];
+        }
+        
         //NSLog(@"Update object[%@]: %f,%f with height: %f", [objects[i] name], coord.x, coord.y, [objects[i] frame].size.height);
         
         //check if the object should fall
@@ -94,6 +110,7 @@
             coord.y = [levelMap getTileScreenPositionAtPoint:coord].y + [levelMap getTileHeightAtPoint:coord] + adjustmentY;
             [objects[i] setPosition:coord];
         }
+        [objects[i] update:0];
     }
 }
 
