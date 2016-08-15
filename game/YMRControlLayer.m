@@ -90,13 +90,16 @@
     int ladder_gid = [_mainMap isLadderAt:check_pos];
     NSLog(@"Check the tile_gid: %d", ladder_gid);
     //if(ladder_gid >= 0 && ladder_gid != 12)
+    SKNode<YMRMapObject>* obj = [_mainMap getObjectAtPosition:[mainRunner position]];
     if(ladder_gid!=-1)
     {
         NSLog(@"Check the ladder\n\tPlayerX: %f\n\tLadderX: %f", mainRunner.position.x, [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2);
         [mainRunner climb:UP withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
-    //} else //some other objects which can be activated
-        //if() {
-        
+    } else //some other objects which can be activated
+    if(obj) {
+        NSLog(@"activate object: %@", [obj name]);
+        [obj activateWithObject:mainRunner];
+
     } else
         //otherwise just jump!
         [mainRunner jump];

@@ -19,8 +19,11 @@
 -(void) animate;
 
 -(SKNode*) getLightMap;
--(void) activate;
+
+//MapObject protocol implementation
+-(void) activateWithObject: (SKNode*) object;
 -(void) deactivate;
+-(void) setHighlight:(BOOL)status;
 
 
 @end

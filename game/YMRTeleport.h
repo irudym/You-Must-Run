@@ -21,13 +21,14 @@
 -(void) connectTeleport: (YMRTeleport*) teleport;
 
 -(void) activate;
+-(void) activateWithObject: (SKNode*) object;
 -(void) deactivate;
-
--(void) teleportRunner: (YMRRunner*) runner;
+-(void) setHighlight:(BOOL)status;
 
 -(SKNode*) getLightMap;
 
 @property YMRTeleport* linkedTeleport;
 @property NSString* linkedTeleportName;
+@property YMRRunner* currentRunner;
 
 @end

@@ -61,8 +61,9 @@
     return nil;
 }
 
--(void) activate {};
--(void) deactivate {};
+-(void) activateWithObject:(SKNode *)object {}
+-(void) deactivate {}
+-(void) setHighlight:(BOOL)status {}
 
 
 @end

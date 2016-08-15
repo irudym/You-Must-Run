@@ -40,6 +40,7 @@
  **/
 -(int) isLadderAt: (CGPoint) position;
 
+
 /**
  * check if there is a ladder base at provided position
  * @return:
@@ -47,6 +48,8 @@
  *  otherwise: -1
  **/
 -(int) isLadderBaseAt: (CGPoint) position;
+
+-(BOOL) isEmptyTileAtPosition: (CGPoint) position;
 
 
 @property JSTileMap* levelMap;

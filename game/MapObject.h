@@ -9,10 +9,18 @@
 #ifndef MapObject_h
 #define MapObject_h
 
+#import "YMRRunner.h"
+
 @protocol  YMRMapObject <NSObject>
 
+
 @required
--(void) activate;
+
+// highlight the object, for example: switch light in a lift, switch on
+// light at a screen when a runner is near, and so on...
+-(void) setHighlight: (BOOL) status;
+
+-(void) activateWithObject: (SKNode*) object;
 -(void) deactivate;
 
 @end

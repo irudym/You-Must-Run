@@ -10,23 +10,27 @@
 
 @implementation YMRTeleport
 {
-    NSArray* teleportLightFrames;
+    NSMutableArray* teleportLightFrames;
     SKTextureAtlas* atlas;
     SKTexture *activeFrame;
     SKAction* teleportationAction;
     BOOL activated;
+    BOOL highlighted;
     SKSpriteNode* textureLayer;
 }
 
 @synthesize linkedTeleport;
+@synthesize currentRunner;
 
 -(id) initWithName:(NSString *)name andPosition:(CGPoint)position {
     atlas = [YMRSharedTextureAtlas getAtlasByName:@"Objects"];
+    //self = [super initWithTexture:[atlas textureNamed:@"teleport_light2.png"]];
     self = [super init];
     if(!self) return nil;
     
-    [self setSize:CGSizeMake(32, 64)];
+    [self setAnchorPoint:CGPointMake(0, 0)];
     
+    [self setSize:CGSizeMake(32, 64)];
     
     self.linkedTeleport = nil;
     
@@ -36,6 +40,7 @@
     [self load];
     
     activated = NO;
+    highlighted = NO;
     
     return self;
 }
@@ -54,12 +59,13 @@
     [textureLayer setPosition:CGPointMake(17, 34)];
     
     teleportLightFrames = [NSMutableArray array];
-    for(int i=0; i<6; i++) {
+    for(int i=0; i<7; i++) {
         frame = [atlas textureNamed: [NSString stringWithFormat:@"teleport_light%d.png", i]];
+        [teleportLightFrames addObject: frame];
     }
     
     teleportationAction = [SKAction animateWithTextures: teleportLightFrames
-                                           timePerFrame:0.1f
+                                           timePerFrame:0.05f
                                                  resize: NO
                                                 restore: YES];
     
@@ -71,7 +77,8 @@
     point.position  = CGPointMake(0, 0);
     point.zPosition = self.zPosition - 2;  //debug level
     //[self addChild:point];
-
+    
+    self.zPosition = 3000;
 }
 
 -(void) animate {
@@ -83,25 +90,41 @@
 }
 
 -(void) activate {
-    if(activated) return;
-    activated = YES;
-    [textureLayer setHidden: NO];
+    [currentRunner setPosition: CGPointMake([self position].x + 16, [self position].y + 32)];
+     SKAction* sequence = [SKAction sequence:@[teleportationAction, [SKAction performSelector:@selector(afterTeleporation) onTarget:self]]];
+    [self runAction:sequence];
 }
 
 -(void) deactivate {
-    if(!activated) return;
-    activated = NO;
-    [textureLayer setHidden: YES];
+}
+
+-(void) setHighlight:(BOOL)status {
+    if(![textureLayer isHidden] == status) return;
+    [textureLayer setHidden:!status];
     
 }
 
--(void) teleportRunner: (YMRRunner*) runner {
+-(void) activateWithObject:(SKNode *)object {
     //lock runner
+    YMRRunner* runner = (YMRRunner*)object;
+    
+    [runner lock];
+    [runner setHidden:YES];
+    currentRunner = runner;
+    [linkedTeleport setCurrentRunner:runner];
+
+    
+    SKAction* sequence = [SKAction sequence:@[teleportationAction, [SKAction performSelector:@selector(activate) onTarget:linkedTeleport]]];
+    
+    [self runAction:sequence];
     
 }
 
 -(void) afterTeleporation {
     //unlock the runner
+    [currentRunner unlock];
+    [currentRunner setHidden:NO];
+    
 }
 
 #pragma mark LightSource delegate functions

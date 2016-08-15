@@ -19,7 +19,8 @@
 
 -(SKNode*) getLightMap;
 
--(void) activate;
+-(void) activateWithObject: (SKNode*) object;
 -(void) deactivate;
+-(void) setHighlight:(BOOL)status;
 
 @end

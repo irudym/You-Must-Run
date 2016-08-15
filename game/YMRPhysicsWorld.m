@@ -62,14 +62,14 @@
         //deactivate objects
         NSArray* obj = [levelMap getObjects];
         for(int i=0; i< [obj count]; i++) {
-            [obj[i] deactivate];
+            [obj[i] setHighlight:NO];
         }
         
         //check if the object at some map objects and activate it
         mapObject = [levelMap getObjectAtPosition:coord];
         if(mapObject!=nil) {
             NSLog(@"Physical object should activate: %@", [(SKNode*)mapObject name]);
-            [mapObject activate];
+            [mapObject setHighlight:YES];
         }
         
         //NSLog(@"Update object[%@]: %f,%f with height: %f", [objects[i] name], coord.x, coord.y, [objects[i] frame].size.height);
@@ -87,14 +87,16 @@
         [rect setPosition:tile_coord];
         
         if([objects[i] isFalling]) {
-            if(tile_gid!=0) {
+            //if(tile_gid!=0) {
+            if(![levelMap isEmptyTileAtPosition: coord]) {
                 [objects[i] land];
                 //fix the falling object position
                 coord.y = [levelMap getTileScreenPositionAtPoint:coord].y + [levelMap getTileHeightAtPoint:coord] + adjustmentY;
                 [objects[i] setPosition:coord];
             }
         } else
-        if(tile_gid == 0) {
+        if([levelMap isEmptyTileAtPosition: coord]) {
+            //if(tile_gid == 0) {
             NSLog(@"Object needs to fall");
             [objects[i] fall];
         }
@@ -112,6 +114,14 @@
         }
         [objects[i] update:0];
     }
+}
+
+-(BOOL) isOutOfLadder: (CGPoint)position {
+    int tile_gid = [levelMap isLadderAt:position];
+    if(![levelMap isLadderBase:tile_gid]) {
+        
+    }
+    return YES;
 }
 
 @end

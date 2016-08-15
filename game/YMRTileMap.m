@@ -149,8 +149,13 @@
 }
 
 -(BOOL) isLadderBase: (int)gid {
-    if(gid == 10 || gid == 13) return TRUE;
-    return FALSE;
+    if(gid == 10 || gid == 13.) return YES;
+    return NO;
+}
+
+-(BOOL) isLadderTop: (int) gid {
+    if(gid == 12) return YES;
+    return NO;
 }
 
 -(int) isLadderBaseAt:(CGPoint)position {
@@ -158,6 +163,7 @@
     if([self isLadderBase: tile_gid]) return tile_gid;
     return -1;
 }
+
 
 -(SKNode<YMRMapObject>*) getObjectAtPosition: (CGPoint)position {
     
@@ -174,6 +180,18 @@
 
 -(NSArray <SKNode *>*) getObjects {
     return [objectLayer children];
+}
+
+-(BOOL) isEmptyTileAtPosition: (CGPoint) position {
+    int tile_gid = [[_levelMap layerNamed:@"map"] tileGidAt:position];
+    if(tile_gid == 0) return YES;
+    
+    if([self isLadderAt:position]!=-1 && (![self isLadderBase:tile_gid] && ![self isLadderTop:tile_gid])) {
+        CGPoint tile_position = [self getTileScreenPositionAtPoint:position];
+        if(position.x < tile_position.x+8 || position.x > tile_position.x + 16) return YES;
+    }
+
+    return NO;
 }
 
 
