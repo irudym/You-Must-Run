@@ -20,9 +20,9 @@
 -(id) initWithMap: (YMRTileMap*) map;
 
 -(void) addObject: (id<YMRPhysicsObject>) object;
--(void) update;
+-(void) update: (CFTimeInterval)currentTime;
 
-@property float adjustmentY;
+@property CGFloat adjustmentY;
 
 
 @end

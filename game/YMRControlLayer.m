@@ -7,8 +7,9 @@
 //
 
 #import "YMRControlLayer.h"
-
+#import "YMREvent.h"
 #include <math.h>
+#import "YMRRunner.h"
 
 
 @implementation YMRControlLayer
@@ -63,24 +64,31 @@
     return self;
 }
 
--(void) rightButtonDown {
-    //[mainRunner setDirection:CGPointMake(1, 0)];
-    //[mainRunner setButtonPressed:RIGHT];
-    
-    [mainRunner run: RIGHT];
-}
 
 -(void) buttonUp {
-    //[mainRunner setButtonPressed:NONE];
-    //[mainRunner setButtonPressed:UP];
-    [mainRunner stop];
+    [mainRunner handleEvent:[YMREvent createEventByType:EVENT_STOP]];
 }
 
 -(void) leftButtonDown {
-    
-    //[mainRunner setButtonPressed:LEFT];
-    //[mainRunner setDirection:CGPointMake(-1,0)];
-    [mainRunner run: LEFT];
+    // check if Runner should turn to right direction: Left
+    if(![YMRRunner isDirectionLeft: [mainRunner currentDirection]])
+        [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:LEFT]];
+    else
+        [mainRunner handleEvent:[YMREvent createEventByType:EVENT_RUN]];
+}
+
+-(void) rightButtonDown {
+    // check if Runner should turn to right direction: Right
+    if(![YMRRunner isDirectionRight: [mainRunner currentDirection]])
+        [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection: RIGHT]];
+    else
+        [mainRunner handleEvent:[YMREvent createEventByType:EVENT_RUN]];
+}
+
+-(BOOL)compare:(CGFloat)param1 and:(CGFloat)param2 withDelta: (CGFloat)delta {
+    CGFloat diff = param1 - param2;
+    if(fabs(diff) <= delta) return YES;
+    return NO;
 }
 
 -(void) upButtonDown {
@@ -88,25 +96,52 @@
     //TODO: Need to get rid of that adjustment!
     CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y - 50);
     int ladder_gid = [_mainMap isLadderAt:check_pos];
-    NSLog(@"Check the tile_gid: %d", ladder_gid);
+    // NSLog(@"Check the tile_gid: %d", ladder_gid);
     //if(ladder_gid >= 0 && ladder_gid != 12)
     SKNode<YMRMapObject>* obj = [_mainMap getObjectAtPosition:[mainRunner position]];
     if(ladder_gid!=-1)
     {
-        NSLog(@"Check the ladder\n\tPlayerX: %f\n\tLadderX: %f", mainRunner.position.x, [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2);
-        [mainRunner climb:UP withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
+        CGFloat ladderX = [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2;
+        // NSLog(@"Check the ladder\n\tPlayerX: %f\n\tLadderX: %f", mainRunner.position.x, ladderX);
+        //NSLog(@"Compare runner and ladder position %f <=> %f", mainRunner.position.x, ladderX);
+        if(![self compare:mainRunner.position.x and:ladderX withDelta:0.01f]) {
+            //stepTo the ladder position
+            //compare direction
+            if(ladderX - mainRunner.position.x < 0 && [YMRRunner isDirectionRight:mainRunner.currentDirection]) {
+                [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:LEFT]];
+            } else
+            if(ladderX - mainRunner.position.x > 0 && [YMRRunner isDirectionLeft:mainRunner.currentDirection])
+            {
+                [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:RIGHT]];
+            } else {
+                //NSLog(@"===> Need to STEP.TO: %f", ladderX);
+                [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_STEPTO andPoint:CGPointMake(ladderX, mainRunner.position.y)]];
+            }
+        } else {
+            // set direction UP
+            //NSLog(@"Check if Runner looks UP");
+            if(![YMRRunner isDirectionUp:[mainRunner currentDirection]]) {
+                //NSLog(@"===> Turn it UP");
+                [mainRunner handleEvent:[YMREvent createEventWithType: EVENT_TURN andDirection: UP]];
+                
+                //and fix player position as SpriteKit is not so precise (see compare with Delta)
+                [mainRunner setPosition:CGPointMake(ladderX, [mainRunner position].y)];
+             } else {
+                // and climb!
+                [mainRunner handleEvent:[YMREvent createEventByType:EVENT_CLIMB]];
+            }
+        }
     } else //some other objects which can be activated
     if(obj) {
         NSLog(@"activate object: %@", [obj name]);
         [obj activateWithObject:mainRunner];
-
     } else
+        ;
         //otherwise just jump!
-        [mainRunner jump];
+        //[mainRunner handleEvent:[YMREvent createEventByType: EVENT_JUMP]];
 }
 
 -(void) downButtonDown {
-    if([mainRunner currentAction] == STOP_ACTION) return;
     
     //check if ladder is near and climb up
     //TODO: Need to get rid of that adjustment!
@@ -114,10 +149,14 @@
     int ladder_gid = [_mainMap isLadderAt:check_pos];
     NSLog(@"Check the tile_gid: %d", ladder_gid);
     if(ladder_gid >= 0 && ladder_gid != 10) {
-        [mainRunner climb:DOWN withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
+        //[mainRunner climb:DOWN withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
+        if(![YMRRunner isDirectionDown:[mainRunner currentDirection]]) {
+            [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:DOWN]];
+        } else {
+            [mainRunner handleEvent:[YMREvent createEventByType:EVENT_CLIMB]];
+        }
     } //else
         //otherwise duck!
-    
 }
 
 -(void) actionButtonDown {
@@ -127,6 +166,12 @@
 
 -(void) actionButtonUp {
     
+}
+
+- (void)update:(CFTimeInterval)currentTime { 
+    for(YMRControlButton* element in self.children) {
+        [element update: currentTime];
+    }
 }
 
 @end

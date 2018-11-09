@@ -24,6 +24,8 @@
 -(void) actionButtonDown;
 -(void) actionButtonUp;
 
+-(void) update: (CFTimeInterval)currentTime;
+
 @property YMRRunner* mainRunner;
 @property YMRTileMap* mainMap;
 

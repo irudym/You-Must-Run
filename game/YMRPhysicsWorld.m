@@ -51,7 +51,7 @@
 }
 
 
--(void) update {
+-(void) update: (CFTimeInterval)currentTime {
     CGPoint coord;
     CGPoint tile_coord;
     int tile_gid;
@@ -68,7 +68,7 @@
         //check if the object at some map objects and activate it
         mapObject = [levelMap getObjectAtPosition:coord];
         if(mapObject!=nil) {
-            NSLog(@"Physical object should activate: %@", [(SKNode*)mapObject name]);
+            //NSLog(@"Physical object should activate: %@", [(SKNode*)mapObject name]);
             [mapObject setHighlight:YES];
         }
         
@@ -81,30 +81,28 @@
         [point setPosition:coord];
         tile_gid = [[[levelMap levelMap] layerNamed: @"map"] tileGidAt: coord];
         
-        //NSLog(@"Tile at coord: %d", tile_gid);
+        NSLog(@"Tile at coord: %d", tile_gid);
         
         tile_coord = [levelMap getTileScreenPositionAtPoint:[objects[i] position]];
         [rect setPosition:tile_coord];
         
-        if([objects[i] isFalling]) {
-            //if(tile_gid!=0) {
-            if(![levelMap isEmptyTileAtPosition: coord]) {
-                [objects[i] land];
-                //fix the falling object position
-                coord.y = [levelMap getTileScreenPositionAtPoint:coord].y + [levelMap getTileHeightAtPoint:coord] + adjustmentY;
-                [objects[i] setPosition:coord];
-            }
-        } else
+        //Falling
+        
         if([levelMap isEmptyTileAtPosition: coord]) {
             //if(tile_gid == 0) {
-            NSLog(@"Object needs to fall");
-            [objects[i] fall];
+            [objects[i] handleEvent:[YMREvent createEventByType:EVENT_FALL]];
+        } else {
+            //fix the falling object position
+            adjustmentY = 26; // TODO: set a table of adjustments which depends on tile type, could take the data from YMRMap class
+            coord.y = [levelMap getTileScreenPositionAtPoint:coord].y + [levelMap getTileHeightAtPoint:coord] + adjustmentY;
+            [objects[i] handleEvent:[YMREvent createEventWithType:EVENT_LAND andPoint:coord]];
         }
         
         //check that object reached end of ladder during climbing=> need to stop it
         //TODO: need to stop when approached from above!
         //
         //NSLog(@"tile gid: %d | currentAction: %d | curentDirection: (%f,%f)", tile_gid, [objects[i] currentAction], [objects[i] currentDirection].dx, [objects[i] currentDirection].dy);
+        /*
         if([objects[i] currentAction] == CLIMB_ACTION && [levelMap isLadderBase: tile_gid] && [objects[i] currentDirection].dy == DOWN.dy) {
             [objects[i] stop];
             
@@ -113,6 +111,8 @@
             [objects[i] setPosition:coord];
         }
         [objects[i] update:0];
+         */
+        [objects[i] update: currentTime];
     }
 }
 

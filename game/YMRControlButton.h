@@ -17,6 +17,9 @@
 -(void) setButtonDownTarget: (SEL)func fromObject: (id)object;
 -(void) setButtonUpTarget: (SEL)func fromObject: (id)object;
 
+
+-(void) update: (CFTimeInterval)currentTime;
+
 @property SEL func_down;
 @property SEL func_up;
 @property id obj_down;

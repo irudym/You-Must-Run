@@ -19,6 +19,7 @@
     YMRPlayer* mainPlayer;
     YMRTileMap* levelMap;
     CGRect scrollingBorders;
+    YMRControlLayer *controlLayer;
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -54,7 +55,7 @@
     
     [self addChild:physics];
     
-    YMRControlLayer *controlLayer = [[YMRControlLayer alloc] initWithRunner:mainPlayer andMap:levelMap];
+    controlLayer = [[YMRControlLayer alloc] initWithRunner:mainPlayer andMap:levelMap];
     [self addChild:controlLayer];
     
     // Add some gravity
@@ -78,8 +79,11 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    // Update control layer
+    [controlLayer update: currentTime];
+    
     /* Called before each frame is rendered */
-    [physics update];
+    [physics update: currentTime];
     
     //get player's coordinates related to the screen (Scene)
     CGPoint player_pos = [self getScenePositionOfObject:mainPlayer];

@@ -91,7 +91,7 @@
 
 -(void) activate {
     [currentRunner setPosition: CGPointMake([self position].x + 16, [self position].y + 32)];
-     SKAction* sequence = [SKAction sequence:@[teleportationAction, [SKAction performSelector:@selector(afterTeleporation) onTarget:self]]];
+    SKAction* sequence = [SKAction sequence:@[teleportationAction, [SKAction performSelector:@selector(afterTeleporation) onTarget:self]]];
     [self runAction:sequence];
 }
 
@@ -108,11 +108,17 @@
     //lock runner
     YMRRunner* runner = (YMRRunner*)object;
     
-    [runner lock];
-    [runner setHidden:YES];
+    //[runner lock];
+    NSLog(@"Send LOCK event");
+    [runner handleEvent:[YMREvent createEventByType:EVENT_LOCK]];
+    
+    //[runner setHidden:YES];
     currentRunner = runner;
     [linkedTeleport setCurrentRunner:runner];
-
+    
+    // unhide teleport light
+    [self setHidden:NO];
+    [linkedTeleport setHidden:NO];
     
     SKAction* sequence = [SKAction sequence:@[teleportationAction, [SKAction performSelector:@selector(activate) onTarget:linkedTeleport]]];
     
@@ -122,9 +128,10 @@
 
 -(void) afterTeleporation {
     //unlock the runner
-    [currentRunner unlock];
     [currentRunner setHidden:NO];
-    
+    [currentRunner handleEvent:[YMREvent createEventByType:EVENT_UNLOCK]];
+    [self setHidden:YES];
+    [linkedTeleport setHidden:YES];
 }
 
 #pragma mark LightSource delegate functions

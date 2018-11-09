@@ -12,64 +12,46 @@
 
 #import "NSMutableArray (QueueAdditions).h"
 
-#import "YMRAction.h"
+#import "FSMStackMachine.h"
+#import "YMRStopState.h"
 
+typedef enum {
+    NONE, IDLE,  RUN_ACTION = 100, TURN_ACTION, STEP_ACTION, STOP_ACTION, MOVE_ACTION, JUMP_ACTION, FALL_ACTION, CLIMB_ACTION, LANDING_ACTION, STEPTO_ACTION, DUCK_ACTION, LOCKED_ACTION
+} ActionTags;
 
-//typedef enum {
-//    RIGHT = 1, LEFT = -1, UP = 2, DOWN = -2
-//} Direction;
-
-
-
-
-
-@interface YMRRunner : SKSpriteNode <YMRPhysicsObject>
+@interface YMRRunner : SKSpriteNode <YMRPhysicsObject, StateObject>
 
 
 -(id) initWithName: (NSString*) name AndPosition: (CGPoint) position;
 -(void) load;
 
--(void) runToX: (float)x;
--(void) turn: (CGVector)direction;
--(void) fallY: (float)y;
--(void) fall;
--(void) land;
--(void) climbY: (float)y;
--(void) jumpToX: (float)x;
--(void) stepToX: (float)x; //small steps to get to exact point in the map
--(void) runByX: (float)x;
+//Implemet StateObject methods
+-(void)stop;
+-(void)fall;
+-(void)land;
+-(void)run;
+-(void)stopping;
+-(void)turn;
+-(void)turnUp;
+-(void)climb;
 
+-(void)stepTo: (CGPoint)point;
+-(void)turnTo:(CGVector)direction;
 
-//key press events
+//process events
+-(void) handleEvent: (YMREvent*) event;
 
--(void) stop;
--(void) jump;
--(void) run: (CGVector) direction;
-
-
-/**
- @funtion climb - go up or down on the letter, use runX to adjust the player at the ledder
-**/
--(void) climb: (CGVector) direction withX: (float)x;
-
-
--(BOOL) isFalling;
-
--(void) animate;
+//utility functions
+-(void) logFunction:(NSString*) name;
++(BOOL) compareVector: (CGVector) v1 with:(CGVector) v2;
++(BOOL) isDirectionLeft: (CGVector) direction;
++(BOOL) isDirectionRight: (CGVector) direction;
++(BOOL) isDirectionUp: (CGVector) direction;
++(BOOL) isDirectionDown: (CGVector) direction;
 
 -(void) setFrame: (SKTexture*) frame;
 
--(void) runNextTask;
 
--(void) setStand;
-
-+ (SKAction *)jumpWithStartPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint height:(CGFloat)height;
-
-
-//@property ActionTags nextAction;
-//@property CGPoint nextPosition;
-//@property Direction nextDirection;
-@property ActionTags currentAction;
 
 //frames
 @property NSMutableArray* runFrames;
@@ -87,79 +69,23 @@
 //direction
 @property CGVector currentDirection;
 
-
-/**
- * Helper functions
- *
- * beforeAction - the first method in queue, performs some initial actions
- * action - usually amination action (the second element in the taskQueue
- * afterAction - the last method which finalize all actions
- *
- * example: actionTurnLeft
-            afterTurnLeft
- 
- * all these function can be overrided by child classes
- **/
-
--(void) actionTurnRight;
--(void) afterTurnRight;
-
--(void) actionTurnLeft;
--(void) afterTurnLeft;
-
--(void) actionTurnUpDown;
--(void) afterTurnUpDown;
-
--(void) actionFall;
-
--(void) actionLanding;
--(void) afterLanding;
-
--(void) actionStop;
--(void) afterStop;
-
--(void) actionRun;
-
--(void) actionStep;
--(void) afterStep;
-
--(void) actionClimb;
-
-//Physic object functions
-//lock and unlock - used to lock the runner in case of some animations, in example: teleportation
-
--(void) lock;
--(void) unlock;
-
 //OVERRIDE
 -(void) update: (CFTimeInterval)currentTime;
 
-//Utiliy functions
--(void) runAction: (SKAction*) action andAfter: (SEL) func;
--(void) logFunction:(NSString*) name;
-+(BOOL) compareVector: (CGVector) v1 with:(CGVector) v2;
-+(BOOL) isDirectionLeft: (CGVector) direction;
-+(BOOL) isDirectionRight: (CGVector) direction;
-
-
-
 //animations
-@property YMRAction *runAction;
-@property YMRAction *stopAction;
-@property YMRAction *rotateAction;
-@property YMRAction *rotateUpAction;
-@property YMRAction *landAction;
-@property YMRAction *landActionUp; //for reaching end of a ladder
-@property YMRAction *jumpAction;
-@property YMRAction *climbAction;
+@property SKAction *runAction;
+@property SKAction *stopAction;
+@property SKAction *rotateAction;
+@property SKAction *rotateUpAction;
+@property SKAction *landAction;
+@property SKAction *landActionUp; //for reaching end of a ladder
+@property SKAction *jumpAction;
+@property SKAction *climbAction;
 
 //physics characteristic
 @property float moveSpeed;
 
-//task queue
-@property NSMutableArray* taskQueue;
 
-//@property CGPoint direction;
-//@property Direction buttonPressed;
+@property FSMStackMachine* stateMachine;
 
 @end

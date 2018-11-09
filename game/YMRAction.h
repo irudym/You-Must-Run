@@ -8,11 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-
+/*
 typedef enum {
     NONE, IDLE,  RUN_ACTION = 100, TURN_ACTION, STEP_ACTION, STOP_ACTION, MOVE_ACTION, JUMP_ACTION, FALL_ACTION, CLIMB_ACTION, LANDING_ACTION, STEPTO_ACTION, DUCK_ACTION, LOCKED_ACTION
 } ActionTags;
-
+*/
 
 @interface YMRAction : NSObject
 

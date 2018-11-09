@@ -21,13 +21,7 @@ FOUNDATION_EXPORT CGVector const DOWN;
 -(void) fall;
 -(void) land;
 
--(bool) isFalling;
-
--(int) currentAction;
 -(CGVector) currentDirection;
-
--(void) lock;
--(void) unlock;
 
 @end
 

@@ -8,10 +8,9 @@
 
 #import "YMRRunner.h"
 
+
 @interface YMRPlayer : YMRRunner
 
 -(id) init;
-
--(void) run: (CGVector) direction;
 
 @end

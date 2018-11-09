@@ -10,6 +10,9 @@
 
 @implementation YMRControlButton
 
+{
+    BOOL buttonPressed;
+}
 
 
 -(id) init
@@ -17,6 +20,7 @@
     self = [super init];
     _obj_down = nil;
     _obj_up = nil;
+    buttonPressed = NO;
     return self;
 }
 
@@ -24,6 +28,8 @@
     self = [self initWithImageNamed:filename];
     _obj_down = nil;
     _obj_up = nil;
+    buttonPressed = NO;
+    
     self.userInteractionEnabled = TRUE;
     return self;
 }
@@ -38,6 +44,7 @@
 {
     if(!_obj_down) return;
     [_obj_down performSelector: _func_down];
+    buttonPressed = YES;
 }
 
 
@@ -46,6 +53,7 @@
 {
     if(!_obj_up) return;
     [_obj_up performSelector:_func_up];
+    buttonPressed = NO;
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
@@ -63,6 +71,12 @@
 -(void) setButtonUpTarget:(SEL)func fromObject:(id)object {
     _obj_up = object;
     _func_up = func;
+}
+
+-(void) update: (CFTimeInterval)currentTime {
+    if (buttonPressed) {
+        [_obj_down performSelector: _func_down];
+    }
 }
 
 

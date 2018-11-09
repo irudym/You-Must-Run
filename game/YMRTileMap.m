@@ -143,7 +143,7 @@
  **/
 -(int) isLadderAt:(CGPoint)position {
     int tile_gid = [[_levelMap layerNamed:@"map"] tileGidAt:position];
-    NSLog(@"==>isLadderAt: %d", tile_gid);
+    // NSLog(@"==>isLadderAt: %d", tile_gid);
     if(tile_gid >= 10 && tile_gid < 14) return tile_gid;
     return -1;
 }

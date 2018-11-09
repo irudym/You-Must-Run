@@ -19,19 +19,4 @@
     return self;
 }
 
-
-
--(void) run:(CGVector)direct {
-    [self logFunction:@"YMRPlayer::run"];
-    
-    if(![YMRRunner compareVector:direct with:[self currentDirection]]) {
-        //need to turn the runner to look to the right side
-        [self turn: direct];
-    }
-    
-    if([YMRRunner isDirectionRight:direct])
-        [self runByX:1000];
-    else [self runByX:-1000];
-}
-
 @end
