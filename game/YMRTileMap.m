@@ -8,7 +8,7 @@
 
 #import "YMRTileMap.h"
 
-#define MAP_OFFSET 50
+#define MAP_OFFSET 0  // TODO: should be taken into consideration when return tile coords!
 
 @implementation YMRTileMap
 {
@@ -115,10 +115,14 @@
 
 -(CGPoint) getTileScreenPositionAtPoint: (CGPoint) point {
     CGPoint coord = [[[self.levelMap layerNamed:@"map"] tileAt:point] position];
+    //use tile map coords and multiplay them to tile size
+    
+    CGPoint p = [[self.levelMap layerNamed:@"map"] coordForPoint: point];
+    p.y = [self.levelMap mapSize].height - p.y - 1; // to start from 0
     
     //adjust the position as the sprite has the anchor point in the middle
-    coord.y -= [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.height/2; //size of the tile
-    coord.x -= [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.width/2;
+    coord.y = p.y * [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.height; //-= [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.height/2; //size of the tile
+    coord.x = p.x * [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.width;// [[[self.levelMap layerNamed:@"map"] tileAt:point] frame].size.width/2;
     return coord;
 }
 
@@ -142,6 +146,7 @@
  *@return - ladder tile gid or -1 in case there is no ladder tile
  **/
 -(int) isLadderAt:(CGPoint)position {
+    //TODO: load that data from map file [ladder]
     int tile_gid = [[_levelMap layerNamed:@"map"] tileGidAt:position];
     // NSLog(@"==>isLadderAt: %d", tile_gid);
     if(tile_gid >= 10 && tile_gid < 14) return tile_gid;
@@ -149,11 +154,13 @@
 }
 
 -(BOOL) isLadderBase: (int)gid {
-    if(gid == 10 || gid == 13.) return YES;
+    // TODO: load the data from map file [ladder_bottom]
+    if(gid == 10 || gid == 13) return YES;
     return NO;
 }
 
 -(BOOL) isLadderTop: (int) gid {
+    // TODO: load that data from map file [ladder_top]
     if(gid == 12) return YES;
     return NO;
 }
@@ -192,6 +199,19 @@
     }
 
     return NO;
+}
+
+-(CGFloat) getTileLandHeight: (int)gid withPosition: (CGPoint)position {
+    //TODO: need to get data from map file
+    if(gid == 11 ) return 32;
+    if(gid >= 10 && gid <= 13) return 7;
+    
+    //it also helps to implement diagonal floors
+    return 7;
+}
+
+-(CGFloat) getTileLandHeightAtPosition: (CGPoint)position {
+    return [self getTileLandHeight:[[_levelMap layerNamed:@"map"] tileGidAt:position] withPosition:position];
 }
 
 

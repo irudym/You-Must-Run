@@ -94,9 +94,9 @@
 -(void) upButtonDown {
     //check if ladder is near and climb up
     //TODO: Need to get rid of that adjustment!
-    CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y - 50);
+    CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y);
     int ladder_gid = [_mainMap isLadderAt:check_pos];
-    // NSLog(@"Check the tile_gid: %d", ladder_gid);
+    NSLog(@"Check the tile_gid (is_ladder): %d", ladder_gid);
     //if(ladder_gid >= 0 && ladder_gid != 12)
     SKNode<YMRMapObject>* obj = [_mainMap getObjectAtPosition:[mainRunner position]];
     if(ladder_gid!=-1)
@@ -145,15 +145,32 @@
     
     //check if ladder is near and climb up
     //TODO: Need to get rid of that adjustment!
-    CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y - 50);
+    CGPoint check_pos = CGPointMake([mainRunner position].x, [mainRunner position].y);
     int ladder_gid = [_mainMap isLadderAt:check_pos];
     NSLog(@"Check the tile_gid: %d", ladder_gid);
-    if(ladder_gid >= 0 && ladder_gid != 10) {
-        //[mainRunner climb:DOWN withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
-        if(![YMRRunner isDirectionDown:[mainRunner currentDirection]]) {
-            [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:DOWN]];
+    if(ladder_gid >= 0) {
+        CGFloat ladderX = [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2;
+        
+        if(![self compare:mainRunner.position.x and:ladderX withDelta:0.01f]) {
+            //stepTo the ladder position
+            //compare direction
+            if(ladderX - mainRunner.position.x < 0 && [YMRRunner isDirectionRight:mainRunner.currentDirection]) {
+                [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:LEFT]];
+            } else
+                if(ladderX - mainRunner.position.x > 0 && [YMRRunner isDirectionLeft:mainRunner.currentDirection])
+                {
+                    [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:RIGHT]];
+                } else {
+                    //NSLog(@"===> Need to STEP.TO: %f", ladderX);
+                    [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_STEPTO andPoint:CGPointMake(ladderX, mainRunner.position.y)]];
+                }
         } else {
-            [mainRunner handleEvent:[YMREvent createEventByType:EVENT_CLIMB]];
+            //[mainRunner climb:DOWN withX: [_mainMap getTileScreenPositionAtPoint:check_pos].x + [_mainMap getTileWidthAtPoint: check_pos]/2];
+            if(![YMRRunner isDirectionDown:[mainRunner currentDirection]]) {
+                [mainRunner handleEvent:[YMREvent createEventWithType:EVENT_TURN andDirection:DOWN]];
+            } else {
+                [mainRunner handleEvent:[YMREvent createEventByType:EVENT_CLIMB]];
+            }
         }
     } //else
         //otherwise duck!

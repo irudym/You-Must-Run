@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="11" tilewidth="32" tileheight="32">
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="14">
  <properties>
   <property name="background" value="background.png"/>
+  <property name="ladder_base" value="10; 13"/>
+  <property name="ladder_top" value="12"/>
  </properties>
- <tileset firstgid="1" name="levelset1" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="levelset1" tilewidth="32" tileheight="32" tilecount="63" columns="9">
   <image source="levelset1.png" width="288" height="224"/>
   <tile id="8">
    <properties>
@@ -31,80 +33,80 @@
    </properties>
   </tile>
  </tileset>
- <layer name="shadows" width="20" height="11">
+ <layer id="8" name="shadows" width="20" height="11" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBiaQBiIRaFYDComAeVL4tEHUisOxaIE1MPsECegDpubYO4C6RWBskXQ5Ik1lxIgioalkNyFLC6J5n4ZIJYFYjkquVMViNWAWJ0CM4gByH6AhT16GKDHO3q80TI+ABuaBnc=
   </data>
  </layer>
- <layer name="map" width="20" height="11">
+ <layer id="9" name="map" width="20" height="11">
   <data encoding="base64" compression="zlib">
    eJy9kuEOgCAIhLFMLe39XzfcjklOnH/K7RtMD7hYRP8dx+zMxhQmMmmiL6ipMTDHRJ/VDNH32txF0Qd4Cqj1zAWve5frnqN+lq+VkzFf5kV4iriXN+2hwHui974S+lnzrbc8yHX8op+j9k945Be1Pcj36VpHbReWv5XdzzzXeDMn0LnFSHOr+ADZMAOk
   </data>
  </layer>
- <layer name="front" width="20" height="11">
+ <layer id="10" name="front" width="20" height="11" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYKAu0KWyeWYE5BWAWB7KlsejDpdeYgGxZisCsRIQKwOxCpqcHtQcBai8FhBrA7EOA3nhZo5FTAZKm6GJyQKxHNRNuPwCMw8kLw7FoljUqQKxGhCrk+E+SgA55oHcj82/MmSahw8QYx4AHh4GIw==
   </data>
  </layer>
- <objectgroup name="objects" width="20" height="11">
-  <object name="torch02" type="torch" x="175" y="240">
+ <objectgroup id="4" name="objects">
+  <object id="1" name="torch02" type="torch" x="175" y="240">
    <properties>
     <property name="file" value="torch-2.png"/>
     <property name="sound" value="Audio/fire_loop_01.mp3"/>
    </properties>
   </object>
-  <object name="torch03" type="torch" x="333" y="240">
+  <object id="2" name="torch03" type="torch" x="333" y="240">
    <properties>
     <property name="file" value="torch-2.png"/>
     <property name="sound" value="Audio/fire_loop_01.mp3"/>
    </properties>
   </object>
-  <object name="torch" type="torch" x="79" y="142">
+  <object id="3" name="torch" type="torch" x="79" y="142">
    <properties>
     <property name="file" value="torch-2.png"/>
     <property name="sound" value="Audio/fire_loop_01.mp3"/>
    </properties>
   </object>
-  <object name="torch01" type="torch" x="75" y="306">
+  <object id="4" name="torch01" type="torch" x="75" y="306">
    <properties>
     <property name="file" value="torch-small.png"/>
     <property name="sound" value="Audio/fire_loop_01.mp3"/>
    </properties>
   </object>
-  <object name="torch04" type="torch" x="551" y="77">
+  <object id="5" name="torch04" type="torch" x="551" y="77">
    <properties>
     <property name="sound" value="Audio/fire_loop_01.mp3"/>
    </properties>
   </object>
-  <object name="teleport1" type="teleport" x="14" y="79">
+  <object id="6" name="teleport1" type="teleport" x="14" y="79">
    <properties>
     <property name="linkTo" value="teleport2"/>
    </properties>
   </object>
-  <object name="teleport2" type="teleport" x="591" y="172">
+  <object id="7" name="teleport2" type="teleport" x="591" y="172">
    <properties>
     <property name="linkTo" value="teleport1"/>
    </properties>
   </object>
-  <object name="lift" type="lift" x="372" y="333">
+  <object id="8" name="lift" type="lift" x="372" y="333">
    <properties>
     <property name="toI" value="11"/>
     <property name="toJ" value="5"/>
    </properties>
   </object>
-  <object name="switch1" type="switch" x="278" y="267">
+  <object id="9" name="switch1" type="switch" x="278" y="267">
    <properties>
     <property name="linkTo" value="firepipe01"/>
    </properties>
   </object>
-  <object name="switch3" type="switch" x="527" y="333">
+  <object id="10" name="switch3" type="switch" x="527" y="333">
    <properties>
     <property name="linkTo" value="object2"/>
    </properties>
   </object>
-  <object name="firepipe01" type="firepipe" x="304" y="304"/>
-  <object name="firepipe02" type="firepipe" x="269" y="303"/>
-  <object name="switch2" type="switch" x="236" y="330">
+  <object id="11" name="firepipe01" type="firepipe" x="304" y="304"/>
+  <object id="12" name="firepipe02" type="firepipe" x="269" y="303"/>
+  <object id="13" name="switch2" type="switch" x="236" y="330">
    <properties>
     <property name="linkTo" value="firepipe02"/>
    </properties>

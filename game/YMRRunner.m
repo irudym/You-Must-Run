@@ -42,7 +42,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     moveSpeed = 80; //pixels per second
     
-    self.anchorPoint = CGPointMake(0.5,0.0);
+    self.anchorPoint = CGPointMake(0.5,0);
     
     // init State Machine
     stateMachine = [FSMStackMachine createWithObject:self];
@@ -110,7 +110,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     _runAction = [SKAction animateWithTextures: _runFrames
                                    timePerFrame: 0.1f
-                                         resize: NO
+                                         resize: YES
                                         restore: YES ];
     _stopAction = [SKAction animateWithTextures:_stopFrames
                                    timePerFrame:0.1f
@@ -129,7 +129,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     _landAction = [SKAction animateWithTextures:_landingFrames
                                    timePerFrame:0.1f
-                                         resize: NO
+                                         resize: YES
                                         restore: NO ];
     
     _landActionUp = [SKAction animateWithTextures:landingUpFrames
@@ -154,7 +154,8 @@ CGVector const DOWN = {0.0f,-1.0f};
     [self setFrame:_standFrames[0]];
     
     //create physics object
-    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:[_standFrames[0] size]];
+    CGSize size =  [(SKTexture *)_standFrames[0] size];
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:size];
     self.physicsBody.dynamic = NO;
     self.physicsBody.allowsRotation = NO;
     
@@ -169,7 +170,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     point.strokeColor = [SKColor redColor];
     point.position  = CGPointMake(0, 0);
     point.zPosition = 2000;
-    [self addChild:point];
+    // [self addChild:point];
 }
 
 #pragma mark State Object methods
@@ -202,10 +203,9 @@ CGVector const DOWN = {0.0f,-1.0f};
 
 -(void) land {
     self.physicsBody.dynamic = NO;
-    [self setSize:[_landingFrames[0] size]];
     
     //start animation
-    [self runAction: _landAction];
+    if(!([YMRRunner isDirectionDown:currentDirection] || [YMRRunner isDirectionUp:currentDirection]))[self runAction: _landAction];
 }
 
 -(void) run {
@@ -215,7 +215,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     //run animation
     //change frame size
-    [self setSize:[_runFrames[0] size]];
+    //[self setSize:[_runFrames[0] size]];
     [self runAction:[SKAction repeatActionForever:_runAction]];
 }
 
@@ -364,6 +364,10 @@ CGVector const DOWN = {0.0f,-1.0f};
     // NSLog(@"Call setFrame...");
     [self setSize: [frame size]];
     [self setTexture:frame];
+}
+
+-(int) getHeight {
+    return self.size.height;
 }
 
 

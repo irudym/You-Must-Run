@@ -12,7 +12,7 @@
 @implementation YMRLandState
 
 - (void)enterWithObject:(nonnull id<StateObject>)object {
-    NSLog(@"Enter to LAND state");
+    NSLog(@"Enter to LAND state with point: %f, %f", _point.x, _point.y);
     [object setPosition:_point];
     [object land];
 }

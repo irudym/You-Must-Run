@@ -20,6 +20,9 @@
     YMRTileMap* levelMap;
     CGRect scrollingBorders;
     YMRControlLayer *controlLayer;
+    
+    //DEBUG
+    SKLabelNode* playerPosition;
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -48,7 +51,7 @@
     [physics setAdjustmentY:50];
     
     mainPlayer = [[YMRPlayer alloc] init];
-    [mainPlayer setPosition:CGPointMake(80,280)];
+    [mainPlayer setPosition:CGPointMake(42,30)];
     
     [physics addChild: levelMap];
     [physics addObject:mainPlayer];
@@ -64,6 +67,24 @@
     //set scrolling region
     scrollingBorders = CGRectMake(SCROLL_BORDER_X, SCROLL_BORDER_Y, [self size].width - SCROLL_BORDER_Y, [self size].height - SCROLL_BORDER_Y);
     
+    int tile_gid;
+    CGPoint coord = CGPointMake(15, 0);
+    CGPoint tile_coord;
+    NSLog(@"=====================================");
+    NSLog(@"| Probe mode                        |");
+    for(int i = 0; i< 400; i+=20) {
+        coord.y = i;
+        tile_gid = [[[levelMap levelMap] layerNamed: @"map"] tileGidAt: coord];
+        NSLog(@"| => Tile ID: %d at position: %f, %f", tile_gid, coord.x, coord.y);
+        tile_coord = [levelMap getTileScreenPositionAtPoint:coord];
+        NSLog(@"| => Tile coords: %f, %f", tile_coord.x, tile_coord.y);
+    }
+    
+    //DEBUG
+    playerPosition = [SKLabelNode labelNodeWithText:@"Player position: (,)"];
+    [playerPosition setPosition:CGPointMake(150, 32)];
+    [playerPosition setFontSize:22];
+    [self addChild: playerPosition];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -79,11 +100,15 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    // Update control layer
-    [controlLayer update: currentTime];
     
     /* Called before each frame is rendered */
     [physics update: currentTime];
+    
+    
+    // Update control layer
+    [controlLayer update: currentTime];
+    
+    
     
     //get player's coordinates related to the screen (Scene)
     CGPoint player_pos = [self getScenePositionOfObject:mainPlayer];
@@ -113,6 +138,10 @@
                 [physics setPosition:CGPointMake(0,[physics position].y)];
             }
     }
+    
+    //DEBUG
+    //show play position
+    [playerPosition setText:[NSString stringWithFormat:@"Player position: %f, %f", mainPlayer.position.x, mainPlayer.position.y]];
 }
 
 @end

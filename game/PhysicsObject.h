@@ -23,6 +23,8 @@ FOUNDATION_EXPORT CGVector const DOWN;
 
 -(CGVector) currentDirection;
 
+-(int) getHeight;
+
 @end
 
 

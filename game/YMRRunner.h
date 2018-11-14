@@ -51,6 +51,7 @@ typedef enum {
 
 -(void) setFrame: (SKTexture*) frame;
 
+-(int) getHeight;
 
 
 //frames
