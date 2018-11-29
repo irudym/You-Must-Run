@@ -21,6 +21,8 @@
 		622930492191D98A001E7500 /* YMRStepToState.m in Sources */ = {isa = PBXBuildFile; fileRef = 622930472191D98A001E7500 /* YMRStepToState.m */; };
 		622930502191F2C1001E7500 /* YMRClimbState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6229304F2191F2C1001E7500 /* YMRClimbState.m */; };
 		622930512191F2C1001E7500 /* YMRClimbState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6229304F2191F2C1001E7500 /* YMRClimbState.m */; };
+		6251F956219C46DB0083E322 /* YMRJumpState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6251F955219C46DB0083E322 /* YMRJumpState.m */; };
+		6251F957219C46DB0083E322 /* YMRJumpState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6251F955219C46DB0083E322 /* YMRJumpState.m */; };
 		6295A2E0219344CB00DD333D /* YMRLockState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6295A2DF219344CB00DD333D /* YMRLockState.m */; };
 		6295A2E1219344CB00DD333D /* YMRLockState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6295A2DF219344CB00DD333D /* YMRLockState.m */; };
 		62B6FA392179021100019B2C /* YMRStopState.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B6FA382179021100019B2C /* YMRStopState.m */; };
@@ -135,6 +137,8 @@
 		622930472191D98A001E7500 /* YMRStepToState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRStepToState.m; sourceTree = "<group>"; };
 		6229304E2191F2C1001E7500 /* YMRClimbState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRClimbState.h; sourceTree = "<group>"; };
 		6229304F2191F2C1001E7500 /* YMRClimbState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRClimbState.m; sourceTree = "<group>"; };
+		6251F954219C46DB0083E322 /* YMRJumpState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRJumpState.h; sourceTree = "<group>"; };
+		6251F955219C46DB0083E322 /* YMRJumpState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRJumpState.m; sourceTree = "<group>"; };
 		6295A2DE219344CB00DD333D /* YMRLockState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRLockState.h; sourceTree = "<group>"; };
 		6295A2DF219344CB00DD333D /* YMRLockState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMRLockState.m; sourceTree = "<group>"; };
 		62B6FA372179021100019B2C /* YMRStopState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMRStopState.h; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				6229304F2191F2C1001E7500 /* YMRClimbState.m */,
 				6295A2DE219344CB00DD333D /* YMRLockState.h */,
 				6295A2DF219344CB00DD333D /* YMRLockState.m */,
+				6251F954219C46DB0083E322 /* YMRJumpState.h */,
+				6251F955219C46DB0083E322 /* YMRJumpState.m */,
 			);
 			path = states;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 				62B6FA42217902CA00019B2C /* YMREvent.m in Sources */,
 				62293038218F285F001E7500 /* YMRLandState.m in Sources */,
 				784A98D51BEF7C4500E9B7AF /* YMRSwitch.m in Sources */,
+				6251F956219C46DB0083E322 /* YMRJumpState.m in Sources */,
 				62B6FA3E217902AE00019B2C /* FSMStackMachine.m in Sources */,
 				78F404A21D5DCF580007FDB8 /* YMRTeleport.m in Sources */,
 				7827FD071C258DCA00EB3ABC /* NSMutableArray (QueueAdditions).m in Sources */,
@@ -605,6 +612,7 @@
 				784AAD421BF74B900004D880 /* YMRControlLayer.m in Sources */,
 				62293045218F792F001E7500 /* YMRTurnState.m in Sources */,
 				62293039218F285F001E7500 /* YMRLandState.m in Sources */,
+				6251F957219C46DB0083E322 /* YMRJumpState.m in Sources */,
 				7875AA211D5743770004418A /* YMRAction.m in Sources */,
 				78F5909E1BED353A007654CE /* LFCGzipUtility.m in Sources */,
 				784A98E91BEF88BF00E9B7AF /* YMRPhysicsWorld.m in Sources */,

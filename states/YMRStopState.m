@@ -13,6 +13,7 @@
 #import "YMRStepToState.h"
 #import "YMRClimbState.h"
 #import "YMRLockState.h"
+#import "YMRJumpState.h"
 
 @implementation YMRStopState
 
@@ -42,6 +43,9 @@
     }
     if (event.type == EVENT_LOCK) {
         return [YMRLockState createState];
+    }
+    if (event.type == EVENT_JUMP) {
+        return [YMRJumpState createState];
     }
     return nil;
 }

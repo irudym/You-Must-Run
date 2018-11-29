@@ -112,7 +112,7 @@
         }
         
         //Falling
-        if([levelMap isEmptyTileAtPosition:coord] || (![levelMap isEmptyTileAtPosition:coord] && coord.y > [levelMap getTileLandHeightAtPosition: coord] + [levelMap getTileScreenPositionAtPoint:coord].y) && [levelMap isLadderBaseAt:coord] == -1) {
+        if([levelMap isEmptyTileAtPosition:coord] || ((![levelMap isEmptyTileAtPosition:coord] && [levelMap isLadderBaseAt:coord] == -1) && coord.y > [levelMap getTileLandHeightAtPosition: coord] + [levelMap getTileScreenPositionAtPoint:coord].y)) {
             //if(tile_gid == 0) {
             NSLog(@"Start falling at position: %f, %f", coord.x, coord.y);
             [objects[i] handleEvent:[YMREvent createEventByType:EVENT_FALL]];

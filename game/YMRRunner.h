@@ -34,6 +34,7 @@ typedef enum {
 -(void)turn;
 -(void)turnUp;
 -(void)climb;
+-(void)jump;
 
 -(void)stepTo: (CGPoint)point;
 -(void)turnTo:(CGVector)direction;

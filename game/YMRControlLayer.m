@@ -136,9 +136,8 @@
         NSLog(@"activate object: %@", [obj name]);
         [obj activateWithObject:mainRunner];
     } else
-        ;
-        //otherwise just jump!
-        //[mainRunner handleEvent:[YMREvent createEventByType: EVENT_JUMP]];
+        //otherwise just jump (in case there is ground under the feet!)
+        [mainRunner handleEvent:[YMREvent createEventByType:EVENT_JUMP]];
 }
 
 -(void) downButtonDown {

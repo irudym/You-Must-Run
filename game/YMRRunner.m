@@ -140,7 +140,7 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     _jumpAction = [SKAction animateWithTextures:_jumpFrames
                                    timePerFrame:0.1f
-                                         resize: NO
+                                         resize: YES
                                          restore: YES ];
     
     _climbAction = [SKAction animateWithTextures:_climbFrames
@@ -181,6 +181,9 @@ CGVector const DOWN = {0.0f,-1.0f};
 -(void) stop {
     //cancel all actions
     [self removeAllActions];
+    
+    //switch off physics just in case
+    self.physicsBody.dynamic = NO;
     
     if([YMRRunner isDirectionDown:currentDirection] || [YMRRunner isDirectionUp:currentDirection])
         [self setFrame:_standFrames[1]];
@@ -230,6 +233,14 @@ CGVector const DOWN = {0.0f,-1.0f};
     
     //start animation
     [self runAction: _stopAction];
+}
+
+-(void) jump {
+    self.physicsBody.dynamic = YES;
+    [self runAction: _jumpAction];
+    
+    //kick the runner to skies!
+    [self.physicsBody applyImpulse:CGVectorMake(currentDirection.dx, 2)];
 }
 
 

@@ -4,6 +4,8 @@
   <property name="background" value="background.png"/>
   <property name="ladder_base" value="10; 13"/>
   <property name="ladder_top" value="12"/>
+  <property name="tile_land_height_1" value="start: 7, end: 7"/>
+  <property name="tile_land_height_all" value="start: 7, end: 7"/>
  </properties>
  <tileset firstgid="1" name="levelset1" tilewidth="32" tileheight="32" tilecount="63" columns="9">
   <image source="levelset1.png" width="288" height="224"/>

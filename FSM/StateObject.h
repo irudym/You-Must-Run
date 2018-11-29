@@ -21,6 +21,7 @@
 //-(void) turn;
 //-(void) turnUp;
 -(void) climb;
+-(void) jump;
 
 -(void) turnTo: (CGVector)direction;
 -(void) stepTo: (CGPoint)point;
